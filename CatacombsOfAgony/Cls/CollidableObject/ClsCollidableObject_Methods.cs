@@ -70,6 +70,6 @@ namespace SADGames.Classes.Collidable_Object
         public abstract void RightCollisionAction(ref ClsPlayer player);
 
         #endregion
-
     }
+
 }

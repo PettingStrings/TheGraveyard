@@ -23,6 +23,7 @@ namespace SADGames.Classes.Player
         Timer walkTim;
 
         public int MS { get => ms; }
+        public Timer WalkTim { get => walkTim; set => walkTim = value; }
 
         /// <summary>
         /// Cambia le immagini al della picturebox
@@ -73,12 +74,12 @@ namespace SADGames.Classes.Player
 
         private void SetupForWalk()
         {
-            if ((walkCanIs.CanDo && !walkCanIs.IsDoing && !walkTim.Enabled))
+            if ((walkCanIs.CanDo && !walkCanIs.IsDoing && !WalkTim.Enabled))
             {
                 idleCanIs.CanDo = true;
                 idleCanIs.IsDoing = false;
                 this.TimIdle.Stop();
-                this.walkTim.Start();
+                this.WalkTim.Start();
             }
         }
 

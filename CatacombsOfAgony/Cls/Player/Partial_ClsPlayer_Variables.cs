@@ -28,7 +28,7 @@ namespace SADGames.Classes.Player
         public ClsAnimation AnimJump { get => jumpAnimation; set => jumpAnimation = value; }
         public ClsAnimation AnimIdle { get => idleAnimation; set => idleAnimation = value; }
         public Timer TimIdle { get => timIdle; set => timIdle = value; }
-        public Timer TimRun { get => walkTim; set => walkTim = value; }
+        public Timer TimRun { get => WalkTim; set => WalkTim = value; }
         internal FACE_DIR FDir { get => fDir; set => fDir = value; }
         public bool OnGround { get => onGround; set => onGround = value; }
         public StrCanIs CanisJump { get => jumpCanIs; set => jumpCanIs = value; }

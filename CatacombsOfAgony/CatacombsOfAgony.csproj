@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cls\Animation\ClsAnimation.cs" />
+    <Compile Include="Cls\Birb\ClsSkyChaser.cs" />
     <Compile Include="Cls\CanIs\StrCanIs.cs" />
     <Compile Include="Cls\CollidableObject\ClsCollidableObject_Methods.cs" />
     <Compile Include="Cls\CollidableObject\ClsCollidableObject_Variables.cs" />
@@ -118,6 +119,37 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack0.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack1.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack10.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack11.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack12.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack13.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack14.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack15.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack16.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack17.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack2.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack3.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack4.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack5.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack6.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack7.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack8.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_attack\skeleton_attack9.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk1.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk10.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk11.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk12.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk13.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk2.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk3.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk4.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk5.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk6.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk7.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk8.png" />
+    <Content Include="Assets\enemies\Skeleton\skeleton_walk\skeleton_walk9.png" />
     <Content Include="Assets\misc\icon.ico" />
     <Content Include="Assets\moon\Moon_01.png" />
     <Content Include="Assets\moon\Moon_02.png" />

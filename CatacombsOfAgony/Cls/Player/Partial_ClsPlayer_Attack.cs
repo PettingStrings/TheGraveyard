@@ -16,6 +16,8 @@ namespace SADGames.Classes.Player
         StrCanIs atkCanIs;
         int atkFrame = 0;
 
+        public int AtkFrame { get => atkFrame; set => atkFrame = value; }
+
         /// <summary>
         /// Varifica se può attaccare, se può fa partire il timer(l'animazione) e disabilita le altre mosse
         /// </summary>
@@ -51,7 +53,7 @@ namespace SADGames.Classes.Player
         {
             if (this.FDir == FACE_DIR.RIGHT)Body.Image = AnimAttack.GetNextFrame(ref atkFrame);
             else Body.Image = atkAnimation.GetNextFlippedXFrame(ref atkFrame);
-            if (this.atkFrame == atkAnimation.FramesLenght - 1)
+            if (this.AtkFrame == atkAnimation.FramesLenght - 1)
             {
                 atkTim.Stop();
                 idleCanIs.CanDo = true;

@@ -39,7 +39,7 @@ namespace SADGames.Classes.Player
         /// </summary>
         private void SetUpIdle()
         {
-            walkTim.Stop();
+            WalkTim.Stop();
         }
 
         private void TimIdle_Tick(object sender, EventArgs e)

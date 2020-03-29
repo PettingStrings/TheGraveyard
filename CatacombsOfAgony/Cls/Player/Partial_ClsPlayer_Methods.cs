@@ -16,7 +16,10 @@ namespace SADGames.Classes.Player
     {
         public void Die()
         {
-            Body.Location = new Point(this.lastTouchedPlat.Location.X, this.lastTouchedPlat.Location.Y - this.Body.Height);
+            //Body.Location = new Point(this.lastTouchedPlat.Location.X, this.lastTouchedPlat.Location.Y - this.Body.Height);
+
+            Body.Location = new Point(0, 0);
+            onGround = false;
         }
 
         public override void BottomCollisionAction(ref ClsPlayer player){}

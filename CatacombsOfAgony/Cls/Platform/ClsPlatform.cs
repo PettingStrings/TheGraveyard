@@ -38,8 +38,8 @@ namespace SADGames.Classes.Platform
         public override void LeftCollisionAction(ref ClsPlayer player)
         {
             player.Body.Location = new System.Drawing.Point(
-                this.Body.Location.X,
-                base.Body.Location.Y
+                this.Body.Location.X - player.Body.Width,
+                player.Body.Location.Y
                 );
         }
 
