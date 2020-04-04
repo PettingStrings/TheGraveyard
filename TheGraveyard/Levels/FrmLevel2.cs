@@ -222,16 +222,32 @@ namespace TheGraveyard.Levels
                 if (platform.IsColliding(ref this.player) == SADGames.Classes.Collidable_Object.COLLIDED_EDGE.TOP) this.player.OnGround = true;
 
             foreach (var enemy in platWatchers)
-                 enemy.IsColliding(ref player);
+                if (enemy.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE & enemy.TimAI.Enabled)
+                {
+                    Retry();
+                }
 
             foreach (var birb in skyChasers)
-                 if(birb.TimAI.Enabled) birb.IsColliding(ref player);
+                if (birb.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE & birb.TimAI.Enabled)
+                {
+                    Retry();
+                }
 
             winFlag.IsColliding(ref player);
-            spike.IsColliding(ref player);
+            if (spike.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE) {
+                Retry();
+            }
 
             if (winFlag.Win)
                 this.Close();
+        }
+        void Retry()
+        {
+            PauseProcess();
+            this.DialogResult = DialogResult.Retry;
+            FrmYouDied frm = new FrmYouDied(this.Location, this.Size);
+            frm.ShowDialog(this);
+            this.Close();
         }
         private void Gravity()
         {
@@ -258,10 +274,10 @@ namespace TheGraveyard.Levels
 
         private void frmLevel2_Resize(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
-                this.timPhysEng.Start();
+            if (this.WindowState == FormWindowState.Normal)
+                UnPauseProcess();
             else
-                this.timPhysEng.Stop();
+                PauseProcess();
         }
 
         private void timTrap_Tick(object sender, EventArgs e)

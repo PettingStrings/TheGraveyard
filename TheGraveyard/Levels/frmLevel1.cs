@@ -228,16 +228,30 @@ namespace TheGraveyard.Levels
                 if (platform.IsColliding(ref this.player) == SADGames.Classes.Collidable_Object.COLLIDED_EDGE.TOP) this.player.OnGround = true;
 
             foreach (var enemy in platWatchers)
-                enemy.IsColliding(ref player);
+                if(enemy.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE & enemy.TimAI.Enabled)
+                {
+                    Retry();
+                }
 
             foreach (var birb in skyChasers)
-                birb.IsColliding(ref player);
+                if (birb.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE & birb.TimAI.Enabled)
+                {
+                    Retry();
+                }
 
             winFlag.IsColliding(ref player);
+
             if (winFlag.Win)
                 this.Close();
         }
-
+        void Retry()
+        {
+            PauseProcess();
+            this.DialogResult = DialogResult.Retry;
+            FrmYouDied frm = new FrmYouDied(this.Location, this.Size);
+            frm.ShowDialog(this);
+            this.Close();
+        }
         private void Gravity()
         {
             int G = 5;
@@ -264,7 +278,7 @@ namespace TheGraveyard.Levels
 
         private void frmLevel1_Resize(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
+            if (this.WindowState == FormWindowState.Normal)
                 this.timPhysEng.Start();
             else
                 this.timPhysEng.Stop();

@@ -10,6 +10,7 @@ namespace TheGraveyard
     static class Program
     {
         public static ClsMoon moon;
+        public static ClsPlayerAcc account = new ClsPlayerAcc();
         /// <summary>
         /// Punto di ingresso principale dell'applicazione.
         /// </summary>

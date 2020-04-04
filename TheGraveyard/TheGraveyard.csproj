@@ -56,6 +56,7 @@
     <Compile Include="Cls\Animation\ClsAnimation.cs" />
     <Compile Include="Cls\Birb\ClsSkyChaser.cs" />
     <Compile Include="Cls\CanIs\StrCanIs.cs" />
+    <Compile Include="Cls\RainParticle\ClsRain.cs" />
     <Compile Include="Cls\CollidableObject\ClsCollidableObject_Methods.cs" />
     <Compile Include="Cls\CollidableObject\ClsCollidableObject_Variables.cs" />
     <Compile Include="Cls\Enemy\ClsPlatformWatcher.cs" />
@@ -68,8 +69,15 @@
     <Compile Include="Cls\Player\Partial_ClsPlayer_Methods.cs" />
     <Compile Include="Cls\Player\Partial_ClsPlayer_Variables.cs" />
     <Compile Include="Cls\Player\Partial_ClsPlayer_Walk.cs" />
+    <Compile Include="Cls\RainParticle\ClsRainDrop.cs" />
     <Compile Include="Cls\Spikes\ClsSpikes.cs" />
     <Compile Include="Cls\WinFlag\ClsWinFlag.cs" />
+    <Compile Include="FrmAccesso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAccesso.Designer.cs">
+      <DependentUpon>FrmAccesso.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +89,12 @@
     </Compile>
     <Compile Include="FrmLevels.Designer.cs">
       <DependentUpon>FrmLevels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Levels\FrmBoss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Levels\FrmBoss.Designer.cs">
+      <DependentUpon>FrmBoss.cs</DependentUpon>
     </Compile>
     <Compile Include="Levels\FrmLevel1.cs">
       <SubType>Form</SubType>
@@ -94,19 +108,34 @@
     <Compile Include="Levels\FrmLevel2.Designer.cs">
       <DependentUpon>FrmLevel2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Levels\FrmYouDied.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Levels\FrmYouDied.Designer.cs">
+      <DependentUpon>FrmYouDied.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAccesso.resx">
+      <DependentUpon>FrmAccesso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMainMenu.resx">
       <DependentUpon>FrmMainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLevels.resx">
       <DependentUpon>FrmLevels.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Levels\FrmBoss.resx">
+      <DependentUpon>FrmBoss.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Levels\FrmLevel1.resx">
       <DependentUpon>FrmLevel1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Levels\FrmLevel2.resx">
       <DependentUpon>FrmLevel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Levels\FrmYouDied.resx">
+      <DependentUpon>FrmYouDied.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -133,6 +162,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\enemies\plague_spear\attack\attack0.png" />
+    <Content Include="Assets\enemies\plague_spear\attack\attack1.png" />
+    <Content Include="Assets\enemies\plague_spear\attack\attack2.png" />
+    <Content Include="Assets\enemies\plague_spear\attack\attack3.png" />
+    <Content Include="Assets\enemies\plague_spear\attack\attack4.png" />
+    <Content Include="Assets\enemies\plague_spear\attack\attack5.png" />
+    <Content Include="Assets\enemies\plague_spear\attack\attack6.png" />
+    <Content Include="Assets\enemies\plague_spear\walk\walk0.png" />
+    <Content Include="Assets\enemies\plague_spear\walk\walk1.png" />
+    <Content Include="Assets\enemies\plague_spear\walk\walk2.png" />
+    <Content Include="Assets\enemies\plague_spear\walk\walk3.png" />
+    <Content Include="Assets\enemies\plague_spear\walk\walk4.png" />
+    <Content Include="Assets\enemies\plague_spear\walk\walk5.png" />
     <Content Include="Assets\enemies\SkyChaser\frame0.png" />
     <Content Include="Assets\enemies\SkyChaser\frame1.png" />
     <Content Include="Assets\enemies\SkyChaser\frame2.png" />
@@ -241,6 +283,8 @@
     <Content Include="Cls\HUD\0.bmp" />
     <Content Include="Cls\HUD\2.bmp" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Cls\Boss\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -26,18 +26,24 @@ namespace TheGraveyard
         private void picLvl1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("A-> Movimento a Sinistra\nD-> Movimento a Destra\nF-> Attacco\n Space-> Salto","Comandi");
-            TheGraveyard.Levels.FrmLevel1 frmLvl1 = new Levels.FrmLevel1();
             this.Hide();
-            frmLvl1.ShowDialog(this);
+            TheGraveyard.Levels.FrmLevel1 frmLvl1 = new Levels.FrmLevel1();
+            while (frmLvl1.ShowDialog(this) == DialogResult.Retry)
+            {
+                frmLvl1 = new Levels.FrmLevel1();
+            }
             this.Show();
         }
 
         private void picLvl2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("A-> Movimento a Sinistra\nD-> Movimento a Destra\n F-> Attacco\n Space-> Salto");
-            TheGraveyard.Levels.FrmLevel2 frmLvl2 = new Levels.FrmLevel2();
+            MessageBox.Show("A-> Movimento a Sinistra\nD-> Movimento a Destra\nF-> Attacco\n Space-> Salto", "Comandi");
             this.Hide();
-            frmLvl2.ShowDialog(this);
+            TheGraveyard.Levels.FrmLevel2 frmLvl2 = new Levels.FrmLevel2();
+            while (frmLvl2.ShowDialog(this) == DialogResult.Retry)
+            {
+                frmLvl2 = new Levels.FrmLevel2();
+            }
             this.Show();
         }
     }

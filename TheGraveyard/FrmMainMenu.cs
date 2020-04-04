@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SADGames.Classes.Animation;
+using TheGraveyard.Levels;
 
 namespace TheGraveyard
 {
     public partial class FrmMainMenu : Form
     {
-        
         public FrmMainMenu()
         {
             InitializeComponent();
@@ -21,6 +21,8 @@ namespace TheGraveyard
 
         private void FrmMainMenu_Load(object sender, EventArgs e)
         {
+            FrmBoss boss = new FrmBoss();
+            boss.ShowDialog(this);
             lblVersion.Text = this.ProductVersion;
             Program.moon.Target = this.picMoon;
             Program.moon.TimAnim.Start();
@@ -49,6 +51,12 @@ namespace TheGraveyard
         private void PauseProcess()
         {
             Program.moon.TimAnim.Stop();
+        }
+
+        private void lblAccount_Click(object sender, EventArgs e)
+        {
+            FrmAccesso frm = new FrmAccesso();
+            frm.ShowDialog(this);
         }
     }
 }

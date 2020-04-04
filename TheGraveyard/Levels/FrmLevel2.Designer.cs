@@ -332,7 +332,7 @@
             // 
             // timTrap
             // 
-            this.timTrap.Interval = 2000;
+            this.timTrap.Interval = 1500;
             this.timTrap.Tick += new System.EventHandler(this.timTrap_Tick);
             // 
             // FrmLevel2

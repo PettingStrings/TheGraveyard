@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Mail;
+using System.Net;
 
-namespace TheGraveyard.Cls.PlayerAccount
+namespace TheGraveyard
 {
     public partial class ClsPlayerAcc
     {
         #region Variables
 
-        string userName;
-        string password;
+        string username, email, password;
 
-        uint kills;
-        uint deaths;
+        uint kills,deaths;
 
         #endregion
 
         #region Properties
 
-        public string UserName { get => userName; set => userName = value; }
+        public string Username { get => username; set => username = value; }
         public string Password { get => password;}
         public uint Kills { get => kills; set => kills = value; }
         public uint Deaths { get => deaths; set => deaths = value; }
+        public string Email { get => email; set => email = value; }
 
 
         #endregion
@@ -35,6 +36,17 @@ namespace TheGraveyard.Cls.PlayerAccount
         public bool LoadData() {
 
             return false;
+        }
+
+        public void SendMail(string from,string title,string body)
+        {
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("danutzzu2002.ro@gmail.com", "Danibell2002"),
+                    EnableSsl = true
+                };
+                client.Send(from, this.email, title, body);
+            
         }
 
         #endregion

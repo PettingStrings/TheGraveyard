@@ -59,8 +59,8 @@ namespace SADGames.Classes.Birb
             else
             {
                 this.Body.Location = new System.Drawing.Point(
-                    (int)(this.Body.Location.X - distX*0.10),
-                    (int)(this.Body.Location.Y - distY * 0.10)
+                    (int)(Math.Ceiling(this.Body.Location.X - distX*0.10)),
+                    (int)(Math.Ceiling(this.Body.Location.Y - distY * 0.10))
                     );
             }
         }

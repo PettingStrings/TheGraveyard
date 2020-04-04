@@ -32,6 +32,7 @@
             this.picMoon = new System.Windows.Forms.PictureBox();
             this.lblPlay = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.lblAccount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picMoon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,12 +67,23 @@
             this.lblVersion.TabIndex = 2;
             this.lblVersion.Text = "version";
             // 
+            // lblAccount
+            // 
+            this.lblAccount.AutoSize = true;
+            this.lblAccount.Location = new System.Drawing.Point(748, 428);
+            this.lblAccount.Name = "lblAccount";
+            this.lblAccount.Size = new System.Drawing.Size(40, 13);
+            this.lblAccount.TabIndex = 3;
+            this.lblAccount.Text = "Accedi";
+            this.lblAccount.Click += new System.EventHandler(this.lblAccount_Click);
+            // 
             // FrmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowText;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblAccount);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.lblPlay);
             this.Controls.Add(this.picMoon);
@@ -92,6 +104,7 @@
         private System.Windows.Forms.PictureBox picMoon;
         private System.Windows.Forms.Label lblPlay;
         private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.Label lblAccount;
     }
 }
 

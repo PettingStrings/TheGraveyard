@@ -52,8 +52,11 @@ namespace SADGames.Classes.Player
         /// <param name="e"></param>
         private void TimAttack_Tick(object sender, EventArgs e)
         {
-            if (this.FDir == FACE_DIR.RIGHT)Body.Image = AnimAttack.GetNextFrame(ref atkFrame);
-            else Body.Image = atkAnimation.GetNextFlippedXFrame(ref atkFrame);
+            if (this.FDir == FACE_DIR.RIGHT) Body.Image = AnimAttack.GetNextFrame(ref atkFrame);
+            else { Body.Image = atkAnimation.GetNextFlippedXFrame(ref atkFrame);
+                if (this.AtkFrame == (int)(AnimAttack.FramesLenght / 2))
+                    this.Body.Left -= this.Body.Width / 5;
+                        }
             if (this.AtkFrame == atkAnimation.FramesLenght - 1)
             {
                 AtkTim.Stop();
