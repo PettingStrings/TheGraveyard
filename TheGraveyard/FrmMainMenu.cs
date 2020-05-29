@@ -21,14 +21,27 @@ namespace TheGraveyard
 
         private void FrmMainMenu_Load(object sender, EventArgs e)
         {
-            FrmBoss boss = new FrmBoss();
-            boss.ShowDialog(this);
             lblVersion.Text = this.ProductVersion;
             Program.moon.Target = this.picMoon;
             Program.moon.TimAnim.Start();
+            if (LoadAccData())
+                lblAccount.Text = Program.account.Username;
+        }
+        /// <summary>
+        /// Carica i dati salvati da file
+        /// </summary>
+        /// <returns>Ritorna true se il login (o registrazione) va a buon fine</returns>
+        private bool LoadAccData()
+        {
+            if (!Program.LoadOfflineAccountData())
+            {
+                MessageBox.Show("Crea un account per poter salvare online i tuoi dati");
+                return false;
+            }
+            return true;
         }
 
-        private void lblPlay_Click(object sender, EventArgs e)
+        private void LblPlay_Click(object sender, EventArgs e)
         {
             this.Hide();
             PauseProcess();
@@ -39,7 +52,7 @@ namespace TheGraveyard
         }
 
         /// <summary>
-        /// Attiviamo suoni/animzioni
+        /// Attiviamo suoni/animazioni
         /// </summary>
         private void UnPauseProcess()
         {
@@ -53,7 +66,7 @@ namespace TheGraveyard
             Program.moon.TimAnim.Stop();
         }
 
-        private void lblAccount_Click(object sender, EventArgs e)
+        private void LblAccount_Click(object sender, EventArgs e)
         {
             FrmAccesso frm = new FrmAccesso();
             frm.ShowDialog(this);

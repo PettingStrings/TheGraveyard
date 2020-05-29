@@ -14,6 +14,10 @@ using System.Windows.Forms;
 
 namespace SADGames.Classes.Player
 {
+    /// <summary>
+    /// Parte della classe contenente i metodi che non hanno
+    /// dei metodi che non richiedono molte varibili o altri metodi
+    /// </summary>
     public partial class ClsPlayer:ClsCollidableObject
     {
         ClsAnimation animDie = new ClsAnimation();
@@ -23,17 +27,25 @@ namespace SADGames.Classes.Player
         public ClsAnimation AnimDie { get => animDie; set => animDie = value; }
         public Timer TimDie { get => timDie; set => timDie = value; }
         public int FrameDie { get => frameDie; set => frameDie = value; }
-
+        /// <summary>
+        /// Anima la morte
+        /// </summary>
         public void Die()
         {
             TimDie.Start();
         }
-
+        /// <summary>
+        /// Timer che continua l'animazinone
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         internal void TimDie_Tick(object sender, EventArgs e)
         {
             DieAnim();
         }
-
+        /// <summary>
+        /// Estrae i frame oer l'animazione
+        /// </summary>
         internal void DieAnim()
         {
             if (FDir == FACE_DIR.RIGHT)

@@ -8,6 +8,9 @@ using SADGames.Classes.Animation;
 
 namespace TheGraveyard
 {
+    /// <summary>
+    /// Una luna animata a scopo estetico
+    /// </summary>
     public partial class ClsMoon
     {
         #region Variables
@@ -32,7 +35,11 @@ namespace TheGraveyard
         public ClsMoon() {
             TimAnim.Tick += TimAnim_Tick;
         }
-
+        /// <summary>
+        /// Inizio animazione
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimAnim_Tick(object sender, EventArgs e)
         {
             this.target.BackgroundImage = this.AnimMoon.GetNextFrame(ref this.frameMoon);

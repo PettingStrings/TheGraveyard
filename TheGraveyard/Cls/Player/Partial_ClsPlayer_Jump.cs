@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace SADGames.Classes.Player
 {
+    /// <summary>
+    /// Parte di classe addetta alla gestione del salto
+    /// </summary>
     public partial class ClsPlayer:ClsCollidableObject
     {
         ClsAnimation jumpAnimation;
@@ -23,7 +26,12 @@ namespace SADGames.Classes.Player
         const int maxJumpHeight = 200;
         int jHeight = maxJumpHeight;//Altezza salto
         bool onGround = false;//Se sta SOPRA un oggetto è true
-
+        /// <summary>
+        /// Muove il giocatore verso l'alto(salto),
+        /// dopo aver controllato che può farlo.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void TimJump_Tick(object sender, EventArgs e)
         {
             int jumpSpeed = 5;
@@ -37,6 +45,11 @@ namespace SADGames.Classes.Player
             jHeight -= jumpSpeed;
             Body.Location = new System.Drawing.Point(Body.Location.X, Body.Location.Y - jumpSpeed);
         }
+        /// <summary>
+        /// Anima il salto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimAnimJmump_Tick(object sender, EventArgs e)
         {//C'è da lavorare sui frame, attualmente animazione solo buggata
             if (fDir == FACE_DIR.RIGHT)
@@ -53,7 +66,9 @@ namespace SADGames.Classes.Player
         {
             SetupJump();
         }
-
+        /// <summary>
+        /// Blocca le azioni che non si possono fare durante il salto
+        /// </summary>
         private void BlockActionsForJump()
         {
             idleCanIs.CanDo = false;
@@ -61,7 +76,9 @@ namespace SADGames.Classes.Player
             walkCanIs.CanDo = true;
             walkCanIs.IsDoing = false;
         }
-
+        /// <summary>
+        /// Prepara il giocatore al salto
+        /// </summary>
         private void SetupJump()
         {
             if (CanisJump.CanDo && !CanisJump.IsDoing && onGround)

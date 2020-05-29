@@ -11,6 +11,9 @@ using SADGames.Classes.Birb;
 
 namespace TheGraveyard.Levels
 {
+    /// <summary>
+    /// Livello 1
+    /// </summary>
     public partial class FrmLevel1 : Form
     {
         ClsPlayer player;
@@ -47,7 +50,9 @@ namespace TheGraveyard.Levels
             StartGame();
             timGC.Start();
         }
-
+        /// <summary>
+        /// Carica le picturebox sulla scena
+        /// </summary>
         private void LoadScene()
         {
             LoadPlats();
@@ -161,6 +166,9 @@ namespace TheGraveyard.Levels
                 animSkeletonDead.AddFrame(PATH);
             }
         }
+        /// <summary>
+        /// Avvia il gioco 
+        /// </summary>
         private void StartGame()
         {
             Program.moon.Target = this.picMoon;
@@ -168,7 +176,9 @@ namespace TheGraveyard.Levels
             UnPauseProcess();
             StartAI();
         }
-
+        /// <summary>
+        /// Fa partire le intelligenze artificiali
+        /// </summary>
         private void StartAI()
         {
             foreach (var skele in platWatchers)
@@ -177,7 +187,11 @@ namespace TheGraveyard.Levels
             foreach (var birb in skyChasers)
                 birb.TimAI.Start();
         }
-
+        /// <summary>
+        /// Controlla quali tasti vengono premuti
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timKBHit_Tick(object sender, EventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.D))
@@ -205,19 +219,30 @@ namespace TheGraveyard.Levels
                     }
                 }
         }
-
+        /// <summary>
+        /// Chiama il garbace collectore ogni 5 secondis
+        /// perchè i bitmap vengono rimossi dopo molto tempo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timGC_Tick(object sender, EventArgs e)
         {//I bitmap non ci mettono molto ad essere rilevati, quindi forzo una pulizia sennò l'uso RAM skizza alle stelle
             System.GC.Collect();
             System.GC.WaitForPendingFinalizers();
         }
-
+        /// <summary>
+        /// Engine fisico, applica la gravità e controlla le collisioni
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timPhysEng_Tick(object sender, EventArgs e)
         {
             Gravity();
             CheckAndResolveCollisions();
         }
-
+        /// <summary>
+        /// Controlla e risolve le collsioni
+        /// </summary>
         private void CheckAndResolveCollisions()
         {
             this.player.OnGround = false;
@@ -244,6 +269,9 @@ namespace TheGraveyard.Levels
             if (winFlag.Win)
                 this.Close();
         }
+        /// <summary>
+        /// Schermata di morte e ri inizio del livello
+        /// </summary>
         void Retry()
         {
             PauseProcess();
@@ -252,6 +280,9 @@ namespace TheGraveyard.Levels
             frm.ShowDialog(this);
             this.Close();
         }
+        /// <summary>
+        /// Applica la gravità
+        /// </summary>
         private void Gravity()
         {
             int G = 5;
@@ -264,18 +295,30 @@ namespace TheGraveyard.Levels
             }
             #endregion
         }
-
+        /// <summary>
+        /// Ferma il processo
+        /// (stoppa l'engine fisico e il timer che legge i tasti premuti)
+        /// </summary>
         private void PauseProcess()
         {
             timPhysEng.Stop();
             timKBHit.Stop();
         }
+        /// <summary>
+        /// Fa ripartire la partita
+        /// (avvia l'engine fisico e il timer che legge i tasti premuti)
+        /// </summary>
         private void UnPauseProcess()
         {
             timPhysEng.Start();
             timKBHit.Start();
         }
-
+        /// <summary>
+        /// Nel caso in cui la finestra venga minimizzata mette in pausa il gioco
+        /// e viceversa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmLevel1_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)

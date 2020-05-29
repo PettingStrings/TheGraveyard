@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using PED;
 
 namespace TheGraveyard
 {
@@ -11,6 +13,7 @@ namespace TheGraveyard
     {
         public static ClsMoon moon;
         public static ClsPlayerAcc account = new ClsPlayerAcc();
+        const int keyLen = 5;
         /// <summary>
         /// Punto di ingresso principale dell'applicazione.
         /// </summary>
@@ -22,7 +25,9 @@ namespace TheGraveyard
             LoadMoon();
             Application.Run(new FrmMainMenu());
         }
-
+        /// <summary>
+        /// Carica frame per animare la luna
+        /// </summary>
         private static void LoadMoon()
         {
             moon = new ClsMoon();
@@ -33,6 +38,32 @@ namespace TheGraveyard
             }
 
             moon.TimAnim.Interval = (int)(1000 / moon.AnimMoon.FramesLenght);
+        }
+        /// <summary>
+        /// Salva i dati su HDD
+        /// </summary>
+        internal static void SaveOfflineAccountData()
+        {
+            StreamWriter writer = new StreamWriter("saveData.padu");
+            writer.WriteLine(account.GetInfoString());
+            writer.Close();
+        }
+        /// <summary>
+        /// Carica i dati da HDD
+        /// </summary>
+        /// <returns>vero se è andato tutto a buon fine</returns>
+        internal static bool LoadOfflineAccountData()
+        {
+            try
+            {
+                StreamReader reader = new StreamReader("saveData.padu");
+                account.ParseInfoString(reader.ReadLine());
+                reader.Close();
+            }catch(Exception e)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

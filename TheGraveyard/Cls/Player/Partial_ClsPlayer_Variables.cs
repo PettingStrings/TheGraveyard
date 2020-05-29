@@ -13,6 +13,9 @@ using System.Windows.Forms;
 
 namespace SADGames.Classes.Player
 {
+    /// <summary>
+    ///Dice la direzione in cui il giocatore guarda 
+    /// </summary>
     enum FACE_DIR { LEFT, RIGHT };
     public enum ACTIONS { WRIGHT, WLEFT, JUMP, CROUCH, IDLE, ATTACK };
     public partial class ClsPlayer:ClsCollidableObject

@@ -6,15 +6,16 @@ using System.Text;
 
 namespace SADGames.Classes.Animation
 {
-    
+    /// <summary>
+    /// Classe che serve a gestire le animazioni
+    /// </summary>
     public class ClsAnimation
     {
-
-
+        //Bitmap che serve da restituire nel caso che un frame risulti nullo
         public static Bitmap ErrorBitmap = new Bitmap(100,100);
 
         #region Variables
-
+        //List dei frame
         List<Bitmap> frames = new List<Bitmap>();
 
         #endregion
@@ -67,8 +68,6 @@ namespace SADGames.Classes.Animation
         }
         /// <summary>
         /// Aggiunge un frame
-        /// (ora uso una lista, in teoria non ci sarebbe bisogno di questa funzione,
-        /// ma la lascio nel caso voglia ad esempio mettere un limite o qualche altra cosa)
         /// </summary>
         /// <param name="PATH">Posizione in cui prendere l'immagine</param>
         public void AddFrame(string PATH)

@@ -56,7 +56,7 @@
             this.lblPlay.TabIndex = 1;
             this.lblPlay.Text = "Enter\r\nThe\r\nCatacombs";
             this.lblPlay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPlay.Click += new System.EventHandler(this.lblPlay_Click);
+            this.lblPlay.Click += new System.EventHandler(this.LblPlay_Click);
             // 
             // lblVersion
             // 
@@ -75,7 +75,7 @@
             this.lblAccount.Size = new System.Drawing.Size(40, 13);
             this.lblAccount.TabIndex = 3;
             this.lblAccount.Text = "Accedi";
-            this.lblAccount.Click += new System.EventHandler(this.lblAccount_Click);
+            this.lblAccount.Click += new System.EventHandler(this.LblAccount_Click);
             // 
             // FrmMainMenu
             // 

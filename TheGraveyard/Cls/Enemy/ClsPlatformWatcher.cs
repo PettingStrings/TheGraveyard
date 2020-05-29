@@ -8,6 +8,9 @@ using SADGames.Classes.Player;
 
 namespace SADGames.Classes.PlatformWatcher
 {
+    /// <summary>
+    /// Nemico che cammina in un determinato range
+    /// </summary>
     public partial class ClsPlatformWatcher:ClsPlayer
     {
         #region Variables
@@ -38,7 +41,11 @@ namespace SADGames.Classes.PlatformWatcher
         {
             AI();
         }
-
+        /// <summary>
+        /// Cammina fino a quando non ha raggiunto il suo limite per
+        /// poi ritornare indietro, nel frattemo controlla de il giocatore 
+        /// è entrato nel suo raggio d'azione
+        /// </summary>
         private void AI()
         {
             int distX = this.Body.Location.X -
@@ -113,7 +120,9 @@ namespace SADGames.Classes.PlatformWatcher
         {
             DieAnim();
         }
-
+        /// <summary>
+        /// Animazione di morte
+        /// </summary>
         new private void DieAnim()
         {
             int frame = FrameDie;

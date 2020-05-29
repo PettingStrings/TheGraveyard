@@ -8,6 +8,9 @@ using SADGames.Classes.Player;
 
 namespace SADGames.Classes.Birb
 {
+    /// <summary>
+    /// Nemico volante che in un certo range  insegue il giocatore
+    /// </summary>
     public partial class ClsSkyChaser:ClsPlayer
     {
         #region Variables
@@ -42,7 +45,11 @@ namespace SADGames.Classes.Birb
         {
                 AI();
         }
-
+        /// <summary>
+        /// Intelligenza del nemico, essa controlla se il giocatore è
+        /// entrato nel suo raggio d'azione, per poi inseguiro
+        /// 
+        /// </summary>
         private void AI()
         {
             //https://yal.cc/rectangle-circle-intersection-test/
@@ -102,10 +109,11 @@ namespace SADGames.Classes.Birb
         }
         new internal void TimDie_Tick(object sender, EventArgs e)
         {
-
             DieAnim();
         }
-
+        /// <summary>
+        /// Esegue l'animazione della morte
+        /// </summary>
         new private void DieAnim()
         {
             int frame = FrameDie;

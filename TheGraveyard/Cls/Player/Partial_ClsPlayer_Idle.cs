@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace SADGames.Classes.Player
 {
+    /// <summary>
+    /// Parte della classe addetta all'animazione mentre il giocatore è fermo
+    /// </summary>
     public partial class ClsPlayer:ClsCollidableObject
     {
         ClsAnimation idleAnimation;//Contenitore animazione da fermo
@@ -35,13 +38,17 @@ namespace SADGames.Classes.Player
             }
         }
         /// <summary>
-        /// 
+        /// Disattiva le animazioni che non servono per stare fermi
         /// </summary>
         private void SetUpIdle()
         {
             WalkTim.Stop();
         }
-
+        /// <summary>
+        /// Anima il giocatore fermo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimIdle_Tick(object sender, EventArgs e)
         {
             if (FDir == FACE_DIR.RIGHT)

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace SADGames.Classes.CanIs
 {
+    /// <summary>
+    /// Struttura usata per sapere se un'azione
+    /// può essere fatta e se la si sta facendo
+    /// </summary>
     public struct StrCanIs
     {
         bool isDoing;

@@ -12,9 +12,11 @@ using SADGames.Classes.Collidable_Object;
 
 namespace SADGames.Classes.Player
 {
+    /// <summary>
+    /// Parte di classe che gestisce la camminata del giocatore
+    /// </summary>
     public partial class ClsPlayer:ClsCollidableObject
     {
-
         ClsAnimation walkAnimation;
         StrCanIs walkCanIs;
 
@@ -56,6 +58,10 @@ namespace SADGames.Classes.Player
             }
         }
         #region Walk
+        /// <summary>
+        /// Cammina vers sinistra
+        /// </summary>
+        /// <param name="finalSpeed">velocità con cui farlo</param>
         private void WalkLeft(int finalSpeed)
         {
             Body.Location = new System.Drawing.Point(
@@ -63,7 +69,10 @@ namespace SADGames.Classes.Player
                     Body.Location.Y
                     );
         }
-
+        /// <summary>
+        /// Cammina vers destra
+        /// </summary>
+        /// <param name="finalSpeed">velocità con cui farlo</param>
         private void WalkRight(int finalSpeed)
         {
             Body.Location = new System.Drawing.Point(
@@ -71,7 +80,9 @@ namespace SADGames.Classes.Player
                     Body.Location.Y
                     );
         }
-
+        /// <summary>
+        /// Prepara il giocatore a camminare
+        /// </summary>
         private void SetupForWalk()
         {
             if ((walkCanIs.CanDo && !walkCanIs.IsDoing && !WalkTim.Enabled))

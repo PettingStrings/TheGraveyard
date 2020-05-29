@@ -11,6 +11,9 @@ using SADGames.Classes;
 
 namespace TheGraveyard
 {
+    /// <summary>
+    /// Selezione livelli
+    /// </summary>
     public partial class FrmLevels : Form
     {
         public FrmLevels()
@@ -22,7 +25,11 @@ namespace TheGraveyard
         {
             
         }
-
+        /// <summary>
+        /// Avvia livello 1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void picLvl1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("A-> Movimento a Sinistra\nD-> Movimento a Destra\nF-> Attacco\n Space-> Salto","Comandi");
@@ -34,7 +41,11 @@ namespace TheGraveyard
             }
             this.Show();
         }
-
+        /// <summary>
+        /// Avvia livello 2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void picLvl2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("A-> Movimento a Sinistra\nD-> Movimento a Destra\nF-> Attacco\n Space-> Salto", "Comandi");

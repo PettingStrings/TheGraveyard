@@ -12,6 +12,9 @@ using SADGames.Classes.Spikes;
 
 namespace TheGraveyard.Levels
 {
+    /// <summary>
+    /// Livello 2
+    /// </summary>
     public partial class FrmLevel2 : Form
     {
         ClsPlayer player;

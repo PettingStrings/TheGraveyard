@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace SADGames.Classes.Platform
 {
+    /// <summary>
+    /// Piattaforma, terreno
+    /// </summary>
     public class ClsPlatform : Classes.Collidable_Object.ClsCollidableObject
     {
         #region Variables

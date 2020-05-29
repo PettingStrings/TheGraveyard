@@ -8,6 +8,9 @@ using SADGames.Classes.Player;
 
 namespace SADGames.Classes.Spikes
 {
+    /// <summary>
+    /// Spine,trappole
+    /// </summary>
     public partial class ClsSpikes:ClsCollidableObject
     {
 

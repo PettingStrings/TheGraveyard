@@ -9,14 +9,33 @@ using SADGames.Classes.Player;
 
 namespace SADGames.Classes.Collidable_Object
 {
+    /// <summary>
+    /// Ritorna il lato con cui si è entrati in collisione
+    /// </summary>
     public enum COLLIDED_EDGE { RIGHT,LEFT,TOP,BOT,NONE};
+    /// <summary>
+    /// Oggetto che è soggetto alla fisica
+    /// </summary>
     public abstract partial class ClsCollidableObject
     {
         #region Methods
-
+        /// <summary>
+        /// Ritorna la coordinata X del cetro di target
+        /// </summary>
+        /// <param name="target">Picturebox di cui misurare il centro</param>
+        /// <returns></returns>
         public static double GetCx(PictureBox target) { return target.Location.X + target.Width * 0.5; }
+        /// <summary>
+        /// Ritorna la coordinata Y del cetro di target
+        /// </summary>
+        /// <param name="target">Picturebox di cui misurare il centro</param>
+        /// <returns></returns>
         public static double GetCy(PictureBox target) { return target.Location.Y + target.Height * 0.5; }
-
+        /// <summary>
+        /// Funzione che controllase la picturebox è in collisione con 'player'
+        /// </summary>
+        /// <param name="player">picturebox da controllare</param>
+        /// <returns></returns>
         public COLLIDED_EDGE IsColliding(ref ClsPlayer player)
         {
 
@@ -60,13 +79,29 @@ namespace SADGames.Classes.Collidable_Object
                 } // bottom
             }
         }
-
+        /// <summary>
+        /// Azione da eseguire nel caso di una collisione dal basso 
+        /// dalla prospettiva del nemico
+        /// </summary>
+        /// <param name="player">giocatore entrato in collsione</param>
         public abstract void BottomCollisionAction(ref ClsPlayer player);
-
+        /// <summary>
+        /// Azione da eseguire nel caso di una collisione dall'alto 
+        /// dalla prospettiva del nemico
+        /// </summary>
+        /// <param name="player">giocatore entrato in collsione</param>
         public abstract void TopCollisionAction(ref ClsPlayer player);
-
+        /// <summary>
+        /// Azione da eseguire nel caso di una collisione da sinistra 
+        /// dalla prospettiva del nemico
+        /// </summary>
+        /// <param name="player">giocatore entrato in collsione</param>
         public abstract void LeftCollisionAction(ref ClsPlayer player);
-
+        /// <summary>
+        /// Azione da eseguire nel caso di una collisione da destra 
+        /// dalla prospettiva del nemico
+        /// </summary>
+        /// <param name="player">giocatore entrato in collsione</param>
         public abstract void RightCollisionAction(ref ClsPlayer player);
 
         #endregion

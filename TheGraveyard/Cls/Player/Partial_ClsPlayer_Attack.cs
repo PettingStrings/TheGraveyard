@@ -8,6 +8,9 @@ using SADGames.Classes.Collidable_Object;
 
 namespace SADGames.Classes.Player
 {
+    /// <summary>
+    /// Parte di classe addetta alla gestione dell'attaco
+    /// </summary>
     public partial class ClsPlayer:ClsCollidableObject
     {
         ClsAnimation atkAnimation; //Gesstice i frame dell'attacco

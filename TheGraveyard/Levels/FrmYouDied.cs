@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace TheGraveyard.Levels
 {
+    /// <summary>
+    /// Form di morte
+    /// </summary>
     public partial class FrmYouDied : Form
     {
         public FrmYouDied(Point location,Size size)
@@ -18,7 +21,11 @@ namespace TheGraveyard.Levels
             this.Location = location;
             this.Size = size;
         }
-
+        /// <summary>
+        /// Da un effetto di fade in
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timAlpha_Tick(object sender, EventArgs e)
         {
             this.Opacity += 0.1;
@@ -35,7 +42,11 @@ namespace TheGraveyard.Levels
                 (this.Height - lblMessage.Height) / 2
                 );
         }
-
+        /// <summary>
+        /// Chiude la form dopo un po di secondi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timPause_Tick(object sender, EventArgs e)
         {
             this.Close();

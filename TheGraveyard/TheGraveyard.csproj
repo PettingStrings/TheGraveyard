@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>CatacombsOfAgony</RootNamespace>
     <AssemblyName>CatacombsOfAgony</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -56,7 +57,6 @@
     <Compile Include="Cls\Animation\ClsAnimation.cs" />
     <Compile Include="Cls\Birb\ClsSkyChaser.cs" />
     <Compile Include="Cls\CanIs\StrCanIs.cs" />
-    <Compile Include="Cls\RainParticle\ClsRain.cs" />
     <Compile Include="Cls\CollidableObject\ClsCollidableObject_Methods.cs" />
     <Compile Include="Cls\CollidableObject\ClsCollidableObject_Variables.cs" />
     <Compile Include="Cls\Enemy\ClsPlatformWatcher.cs" />
@@ -69,7 +69,6 @@
     <Compile Include="Cls\Player\Partial_ClsPlayer_Methods.cs" />
     <Compile Include="Cls\Player\Partial_ClsPlayer_Variables.cs" />
     <Compile Include="Cls\Player\Partial_ClsPlayer_Walk.cs" />
-    <Compile Include="Cls\RainParticle\ClsRainDrop.cs" />
     <Compile Include="Cls\Spikes\ClsSpikes.cs" />
     <Compile Include="Cls\WinFlag\ClsWinFlag.cs" />
     <Compile Include="FrmAccesso.cs">
@@ -89,12 +88,6 @@
     </Compile>
     <Compile Include="FrmLevels.Designer.cs">
       <DependentUpon>FrmLevels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Levels\FrmBoss.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Levels\FrmBoss.Designer.cs">
-      <DependentUpon>FrmBoss.cs</DependentUpon>
     </Compile>
     <Compile Include="Levels\FrmLevel1.cs">
       <SubType>Form</SubType>
@@ -124,9 +117,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLevels.resx">
       <DependentUpon>FrmLevels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Levels\FrmBoss.resx">
-      <DependentUpon>FrmBoss.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Levels\FrmLevel1.resx">
       <DependentUpon>FrmLevel1.cs</DependentUpon>

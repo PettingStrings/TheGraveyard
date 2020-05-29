@@ -8,6 +8,9 @@ using SADGames.Classes.Player;
 
 namespace SADGames.Classes.WinFlag
 {
+    /// <summary>
+    /// Oggetto che toccato porta alla vittoria per VALHALLA!!
+    /// </summary>
     public partial class ClsWinFlag:ClsCollidableObject
     {
         #region Variables

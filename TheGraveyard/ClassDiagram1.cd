@@ -1,73 +1,114 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="SADGames.Classes.Animation.ClsAnimation" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="8.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAACAAACAAAQAAAAIAAAEAABAAAAAAAQAAAAA=</HashCode>
+      <HashCode>AAAAAAIAACAAAAAAAQAAAAIAAAEAABAAAAAAAQAAAAA=</HashCode>
       <FileName>Cls\Animation\ClsAnimation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SADGames.Classes.Birb.ClsSkyChaser" Collapsed="true">
-    <Position X="2.5" Y="1.75" Width="1.5" />
+    <Position X="0.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAIAAAACIAgIAgAACAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAAAMAAAACIAwIAggACAAgACAAIAICAAAAAIAAAA=</HashCode>
       <FileName>Cls\Birb\ClsSkyChaser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SADGames.Classes.Collidable_Object.ClsCollidableObject" Collapsed="true">
-    <Position X="4" Y="3" Width="1.5" />
+    <Position X="0.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAAAAAQAAABAAAAAQCEAAAACAAAAAIAAAI=</HashCode>
       <FileName>Cls\CollidableObject\ClsCollidableObject_Methods.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SADGames.Classes.PlatformWatcher.ClsPlatformWatcher" Collapsed="true">
-    <Position X="5.75" Y="0.5" Width="1.75" />
+    <Position X="2.5" Y="4.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AQAAAAAMAAAAAIAwIAggACAAgACAAIAACAAAAAAAAAA=</HashCode>
       <FileName>Cls\Enemy\ClsPlatformWatcher.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SADGames.Classes.Platform.ClsPlatform" Collapsed="true">
-    <Position X="4" Y="4.25" Width="1.5" />
+    <Position X="3" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAAAAAQAAAAAAAAAACAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Cls\Platform\ClsPlatform.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CatacombsOfAgony.ClsMoon" Collapsed="true">
-    <Position X="8" Y="1.75" Width="1.5" />
+  <Class Name="TheGraveyard.ClsMoon" Collapsed="true">
+    <Position X="8.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAQEQAIAAEACAAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Cls\Moon\ClsMoon.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SADGames.Classes.Player.ClsPlayer" Collapsed="true">
-    <Position X="3" Y="0.5" Width="1.5" />
+    <Position X="3" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>MA2IgCxFaiERQEA+FSBgJiAAkKCgoACQCAQAAUD0yAA=</HashCode>
       <FileName>Cls\Player\Partial_ClsPlayer_Attack.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SADGames.Classes.WinFlag.ClsWinFlag" Collapsed="true">
-    <Position X="6" Y="2.25" Width="1.5" />
+    <Position X="3" Y="2" Width="1.5" />
+    <InheritanceLine Type="SADGames.Classes.Collidable_Object.ClsCollidableObject" FixedToPoint="true">
+      <Path>
+        <Point X="1.25" Y="1.812" />
+        <Point X="1.25" Y="2.312" />
+        <Point X="3" Y="2.312" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAAQAAQAEAAAAAAAACAAAAACAAAAAAAAAA=</HashCode>
       <FileName>Cls\WinFlag\ClsWinFlag.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="TheGraveyard.ClsPlayerAcc" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQCAkAACAYAAAgCQAQAAEIAAAAAAAiAAAAIgAAAAg=</HashCode>
+      <FileName>Cls\PlayerAccount\ClsPlayerAcc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SADGames.Classes.Spikes.ClsSpikes" Collapsed="true">
+    <Position X="3" Y="1.25" Width="1.5" />
+    <InheritanceLine Type="SADGames.Classes.Collidable_Object.ClsCollidableObject" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="1.625" />
+        <Point X="3" Y="1.625" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAQAAAAAAAAAACAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Cls\Spikes\ClsSpikes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Struct Name="SADGames.Classes.CanIs.StrCanIs" Collapsed="true">
-    <Position X="0.75" Y="1.25" Width="1.5" />
+    <Position X="6.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAIAAAAACAAAAAgAAAAA=</HashCode>
       <FileName>Cls\CanIs\StrCanIs.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Enum Name="SADGames.Classes.Collidable_Object.COLLIDED_EDGE" Collapsed="true">
-    <Position X="0.5" Y="2" Width="1.5" />
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIIAgAAAQAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
       <FileName>Cls\CollidableObject\ClsCollidableObject_Methods.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SADGames.Classes.Player.FACE_DIR" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Cls\Player\Partial_ClsPlayer_Variables.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SADGames.Classes.Player.ACTIONS" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEACAAAAAAgAAAAAAAgAAAAAAAAgAAAAABAAAAAAA=</HashCode>
+      <FileName>Cls\Player\Partial_ClsPlayer_Variables.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />
