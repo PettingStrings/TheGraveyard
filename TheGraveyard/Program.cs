@@ -7,6 +7,7 @@ using System.Data.OleDb;
 using System.IO;
 using TheGraveyard;
 using TheGraveyard.Cls.MyQueries;
+using TheGraveyard.Levels;
 
 // cmd.ExecuteScalar();   query che ritornano un solo valore COUNT, SUM, AVG etc...
 // cmd.ExecuteNonQuery(); query di tipo CREATE, DROP, INSERT, UPDATE, DELETE etc...
@@ -36,6 +37,7 @@ namespace TheGraveyard
             conn.Open();
             LoadMoon();
             Application.Run(new FrmMainMenu());
+            //Application.Run(new FrmScore(10,10,100));
         }
         /// <summary>
         /// Carica frame per animare la luna
@@ -78,7 +80,7 @@ namespace TheGraveyard
             return true;
         }
 
-        internal static void Commit()
+        public static void Commit()
         {
             cmd.CommandText = MyQueries.UpdatePlayer(
                 new string(ClsPlayerAcc.Account.Email),
@@ -89,5 +91,20 @@ namespace TheGraveyard
                 ClsPlayerAcc.Account.Deaths);
             cmd.ExecuteNonQuery();
         }
+
+        public static void AddOrUpdateScore(int level,int kills, int time,string email)
+        {
+            cmd.CommandText = MyQueries.CountScores(email,level);
+            if((int)cmd.ExecuteScalar() == 0)
+            {
+                cmd.CommandText = MyQueries.InsertScore(new string(ClsPlayerAcc.Account.Email), level, kills, time);
+            }
+            else
+            {
+                cmd.CommandText = MyQueries.UpdateScore(new string(ClsPlayerAcc.Account.Email), level, kills, time);
+            }
+            cmd.ExecuteNonQuery();
+        }
+
     }
 }

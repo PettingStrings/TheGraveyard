@@ -39,6 +39,12 @@ namespace TheGraveyard.Levels
         ClsAnimation animBirbIdle_Walk;
 
         #endregion
+
+        private int kills = 0, time = 0;
+        public int Kills { get => kills; }
+        public int Time { get => (int)time / 1000; }
+        public bool Win { get => winFlag.Win; }
+
         public FrmLevel2()
         {
             InitializeComponent();
@@ -181,6 +187,7 @@ namespace TheGraveyard.Levels
         }
         private void TimKBHit_Tick(object sender, EventArgs e)
         {
+            time += timKBHit.Interval;
             if (Keyboard.IsKeyDown(Key.D))
             {
                 player.FDir = SADGames.Classes.Player.FACE_DIR.RIGHT; player.Walk();
@@ -225,21 +232,37 @@ namespace TheGraveyard.Levels
                 if (platform.IsColliding(ref this.player) == SADGames.Classes.Collidable_Object.COLLIDED_EDGE.TOP) this.player.OnGround = true;
 
             foreach (var enemy in platWatchers)
-                if (enemy.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE & enemy.TimAI.Enabled)
+            {
+                if (enemy.TimAI.Enabled)
                 {
-                    Retry();
+                    if (enemy.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE & enemy.TimAI.Enabled)
+                    {
+                        Retry();
+                    }
+                    else if (!enemy.TimAI.Enabled)
+                    { ClsPlayerAcc.Account.Kills++; Program.Commit(); kills++; }
                 }
+            }
 
             foreach (var birb in skyChasers)
-                if (birb.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE & birb.TimAI.Enabled)
+            {
+                if (birb.TimAI.Enabled)
                 {
-                    Retry();
+                    if (birb.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE & birb.TimAI.Enabled)
+                    {
+                        Retry();
+                    }
+                    else if (!birb.TimAI.Enabled)
+                    { ClsPlayerAcc.Account.Kills++; Program.Commit(); kills++; }
                 }
+            }
 
-            winFlag.IsColliding(ref player);
-            if (spike.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE) {
+            if (spike.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE)
+            {
                 Retry();
             }
+
+            winFlag.IsColliding(ref player);
 
             if (winFlag.Win)
                 this.Close();

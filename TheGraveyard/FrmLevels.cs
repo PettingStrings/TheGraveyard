@@ -34,13 +34,27 @@ namespace TheGraveyard
         {
             MessageBox.Show("A-> Movimento a Sinistra\nD-> Movimento a Destra\nF-> Attacco\n Space-> Salto","Comandi");
             this.Hide();
-            TheGraveyard.Levels.FrmLevel1 frmLvl1 = new Levels.FrmLevel1();
+            Levels.FrmLevel1 frmLvl1 = new Levels.FrmLevel1();
+            int deaths = 0;
             while (frmLvl1.ShowDialog(this) == DialogResult.Retry)
             {
+                if (!frmLvl1.Win)
+                    deaths++;
+
                 frmLvl1 = new Levels.FrmLevel1();
             }
+            if (frmLvl1.Win)
+            {
+                Levels.FrmScore score = new Levels.FrmScore(frmLvl1.Kills, deaths, frmLvl1.Time);
+                score.ShowDialog();
+                if (ClsPlayerAcc.Account.LevelsUnlocked == 0)
+                    ClsPlayerAcc.Account.LevelsUnlocked++;
+                Program.AddOrUpdateScore(1, frmLvl1.Kills, frmLvl1.Time, new string(ClsPlayerAcc.Account.Email));
+            }
+            Program.Commit();
             this.Show();
         }
+
         /// <summary>
         /// Avvia livello 2
         /// </summary>
@@ -57,10 +71,23 @@ namespace TheGraveyard
             MessageBox.Show("A-> Movimento a Sinistra\nD-> Movimento a Destra\nF-> Attacco\n Space-> Salto", "Comandi");
             this.Hide();
             TheGraveyard.Levels.FrmLevel2 frmLvl2 = new Levels.FrmLevel2();
+            int deaths = 0;
             while (frmLvl2.ShowDialog(this) == DialogResult.Retry)
             {
+                if (!frmLvl2.Win)
+                    deaths++;
+
                 frmLvl2 = new Levels.FrmLevel2();
             }
+            if (frmLvl2.Win)
+            {
+                Levels.FrmScore score = new Levels.FrmScore(frmLvl2.Kills, deaths, frmLvl2.Time);
+                score.ShowDialog();
+                if (ClsPlayerAcc.Account.LevelsUnlocked == 1)
+                    ClsPlayerAcc.Account.LevelsUnlocked++;
+                Program.AddOrUpdateScore(2, frmLvl2.Kills, frmLvl2.Time, new string(ClsPlayerAcc.Account.Email));
+            }
+            Program.Commit();
             this.Show();
         }
     }

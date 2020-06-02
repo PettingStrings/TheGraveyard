@@ -99,6 +99,12 @@
     <Compile Include="Levels\FrmLevel2.Designer.cs">
       <DependentUpon>FrmLevel2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Levels\FrmScore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Levels\FrmScore.Designer.cs">
+      <DependentUpon>FrmScore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Levels\FrmYouDied.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Levels\FrmLevel2.resx">
       <DependentUpon>FrmLevel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Levels\FrmScore.resx">
+      <DependentUpon>FrmScore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Levels\FrmYouDied.resx">
       <DependentUpon>FrmYouDied.cs</DependentUpon>

@@ -8,13 +8,12 @@ namespace TheGraveyard.Cls.MyQueries
 {
     public static class MyQueries
     {
-
         public static string EmailExists(string email)
         {
             return $"SELECT Count(email) FROM accounts WHERE(((accounts.[email]) = '{email}')); ";
         }
 
-        public static string AddAccount(string email, string username, string password, bool isVerified = false)
+        public static string InsertAccount(string email, string username, string password, bool isVerified = false)
         {
             return $"INSERT INTO ACCOUNTS VALUES('{email}', '{username}', '{password}', {isVerified}, 0, 0, date(), false); ";
         }
@@ -49,5 +48,26 @@ namespace TheGraveyard.Cls.MyQueries
 
                     WHERE email = '{email}';";
         }
+
+        public static string CountScores(string email,int level) 
+        {
+            return $@"SELECT Count(*) 
+                    FROM punteggi
+                    WHERE(((punteggi.[utente]) = '{email}') AND ((punteggi.[livello]) = {level}));";
+        }
+
+        public static string InsertScore(string email, int level,int kills, int time)
+        {
+            return $@"INSERT INTO PUNTEGGI 
+                    VALUES ({level}, {kills}, {time}, date(), '{email}');
+";
+        }
+
+        public static string UpdateScore(string email, int level, int kills, int time)
+        {
+            return $@"UPDATE PUNTEGGI SET uccisioni = {kills}, tempo = {time}, data = date()
+                    WHERE utente = '{email}' AND livello = {level};";
+        }
+
     }
 }

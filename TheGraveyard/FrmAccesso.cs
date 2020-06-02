@@ -84,7 +84,7 @@ namespace TheGraveyard
                 return;
             }
 
-            Program.cmd.CommandText = MyQueries.AddAccount(
+            Program.cmd.CommandText = MyQueries.InsertAccount(
                 txtEmail.Text,txtUsername.Text,txtPassword.Text);
             Program.cmd.ExecuteNonQuery();
             MessageBox.Show("Account creato con successo!");

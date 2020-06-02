@@ -8,6 +8,7 @@ using SADGames.Classes.PlatformWatcher;
 using SADGames.Classes.Animation;
 using SADGames.Classes.WinFlag;
 using SADGames.Classes.Birb;
+using TheGraveyard.Levels;
 
 namespace TheGraveyard.Levels
 {
@@ -38,6 +39,10 @@ namespace TheGraveyard.Levels
 
         #endregion
 
+        private int kills = 0, time = 0;
+        public int Kills { get => kills; }
+        public int Time { get => (int)time/1000; }
+        public bool Win { get => winFlag.Win; }
         public FrmLevel1()
         {
             InitializeComponent();
@@ -194,6 +199,7 @@ namespace TheGraveyard.Levels
         /// <param name="e"></param>
         private void TimKBHit_Tick(object sender, EventArgs e)
         {
+            time += timKBHit.Interval;
             if (Keyboard.IsKeyDown(Key.D))
             {
                 player.FDir = SADGames.Classes.Player.FACE_DIR.RIGHT; player.Walk();
@@ -261,7 +267,7 @@ namespace TheGraveyard.Levels
                         Retry();
                     }
                     else if (!enemy.TimAI.Enabled)
-                    { ClsPlayerAcc.Account.Kills++; Program.Commit();  }
+                    { ClsPlayerAcc.Account.Kills++; Program.Commit(); kills++; }
                 }
             }
 
@@ -274,15 +280,21 @@ namespace TheGraveyard.Levels
                         Retry();
                     }
                     else if (!birb.TimAI.Enabled)
-                    { ClsPlayerAcc.Account.Kills++; Program.Commit(); }
+                    { ClsPlayerAcc.Account.Kills++; Program.Commit(); kills++; }
                 }
             }
 
             winFlag.IsColliding(ref player);
 
             if (winFlag.Win)
-                this.Close();
+                EndGame();
         }
+
+        private void EndGame()
+        { 
+            this.Close();
+        }
+
         /// <summary>
         /// Schermata di morte e ri inizio del livello
         /// </summary>

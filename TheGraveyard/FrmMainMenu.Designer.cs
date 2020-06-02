@@ -70,7 +70,7 @@
             // lblAccount
             // 
             this.lblAccount.AutoSize = true;
-            this.lblAccount.Location = new System.Drawing.Point(748, 428);
+            this.lblAccount.Location = new System.Drawing.Point(691, 428);
             this.lblAccount.Name = "lblAccount";
             this.lblAccount.Size = new System.Drawing.Size(40, 13);
             this.lblAccount.TabIndex = 3;
