@@ -24,25 +24,15 @@ namespace TheGraveyard
             lblVersion.Text = this.ProductVersion;
             Program.moon.Target = this.picMoon;
             Program.moon.TimAnim.Start();
-            if (LoadAccData())
-                lblAccount.Text = Program.account.Username;
-        }
-        /// <summary>
-        /// Carica i dati salvati da file
-        /// </summary>
-        /// <returns>Ritorna true se il login (o registrazione) va a buon fine</returns>
-        private bool LoadAccData()
-        {
-            if (!Program.LoadOfflineAccountData())
-            {
-                MessageBox.Show("Crea un account per poter salvare online i tuoi dati");
-                return false;
-            }
-            return true;
         }
 
         private void LblPlay_Click(object sender, EventArgs e)
         {
+            if (!ClsPlayerAcc.Account.Connected)
+            {
+                MessageBox.Show("Fai l'accesso per poter continuare");
+                return;
+            }
             this.Hide();
             PauseProcess();
             FrmLevels frmLevels = new FrmLevels();
@@ -70,6 +60,15 @@ namespace TheGraveyard
         {
             FrmAccesso frm = new FrmAccesso();
             frm.ShowDialog(this);
+            if(string.IsNullOrWhiteSpace(new string(ClsPlayerAcc.Account.Email)))
+            {
+                MessageBox.Show("Fai l'accesso per poter continuare");
+            }
+            else
+            {
+                lblAccount.Text = $"Welcome {new string(ClsPlayerAcc.Account.Username)}";
+                lblAccount.Location = new Point(this.Width - lblAccount.Width,lblAccount.Location.Y);
+            }
         }
     }
 }

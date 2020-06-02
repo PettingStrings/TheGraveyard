@@ -43,7 +43,7 @@ namespace TheGraveyard.Levels
             InitializeComponent();
         }
 
-        private void frmLevel1_Load(object sender, EventArgs e)
+        private void FrmLevel1_Load(object sender, EventArgs e)
         {
             LoadScene();
             LoadPlayer();
@@ -192,13 +192,13 @@ namespace TheGraveyard.Levels
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void timKBHit_Tick(object sender, EventArgs e)
+        private void TimKBHit_Tick(object sender, EventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.D))
             {
                 player.FDir = SADGames.Classes.Player.FACE_DIR.RIGHT; player.Walk();
                 if (player.Body.Location.X > this.Width / 2)
-                    Scroll(player.MS);
+                    ScrollCamera(player.MS);
             }
             else if (Keyboard.IsKeyDown(Key.A)) { player.FDir = SADGames.Classes.Player.FACE_DIR.LEFT; player.Walk(); }
             else if (Keyboard.IsKeyDown(Key.Space)) { player.Jump(); }
@@ -206,7 +206,7 @@ namespace TheGraveyard.Levels
             else { player.Idle(); }
         }
 
-        private void Scroll(int dist)
+        private void ScrollCamera(int dist)
         {
             if (picWinFlag.Location.X > this.Width)
                 foreach(var control in this.Controls)
@@ -225,7 +225,7 @@ namespace TheGraveyard.Levels
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void timGC_Tick(object sender, EventArgs e)
+        private void TimGC_Tick(object sender, EventArgs e)
         {//I bitmap non ci mettono molto ad essere rilevati, quindi forzo una pulizia sennò l'uso RAM skizza alle stelle
             System.GC.Collect();
             System.GC.WaitForPendingFinalizers();
@@ -235,7 +235,7 @@ namespace TheGraveyard.Levels
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void timPhysEng_Tick(object sender, EventArgs e)
+        private void TimPhysEng_Tick(object sender, EventArgs e)
         {
             Gravity();
             CheckAndResolveCollisions();
@@ -253,16 +253,30 @@ namespace TheGraveyard.Levels
                 if (platform.IsColliding(ref this.player) == SADGames.Classes.Collidable_Object.COLLIDED_EDGE.TOP) this.player.OnGround = true;
 
             foreach (var enemy in platWatchers)
-                if(enemy.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE & enemy.TimAI.Enabled)
+            {
+                if (enemy.TimAI.Enabled)
                 {
-                    Retry();
+                    if (enemy.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE & enemy.TimAI.Enabled)
+                    {
+                        Retry();
+                    }
+                    else if (!enemy.TimAI.Enabled)
+                    { ClsPlayerAcc.Account.Kills++; Program.Commit();  }
                 }
+            }
 
             foreach (var birb in skyChasers)
-                if (birb.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE & birb.TimAI.Enabled)
+            {
+                if (birb.TimAI.Enabled)
                 {
-                    Retry();
+                    if (birb.IsColliding(ref player) != SADGames.Classes.Collidable_Object.COLLIDED_EDGE.NONE & birb.TimAI.Enabled)
+                    {
+                        Retry();
+                    }
+                    else if (!birb.TimAI.Enabled)
+                    { ClsPlayerAcc.Account.Kills++; Program.Commit(); }
                 }
+            }
 
             winFlag.IsColliding(ref player);
 
@@ -278,6 +292,8 @@ namespace TheGraveyard.Levels
             this.DialogResult = DialogResult.Retry;
             FrmYouDied frm = new FrmYouDied(this.Location, this.Size);
             frm.ShowDialog(this);
+            ClsPlayerAcc.Account.Deaths++;
+            Program.Commit();
             this.Close();
         }
         /// <summary>
@@ -319,7 +335,7 @@ namespace TheGraveyard.Levels
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmLevel1_Resize(object sender, EventArgs e)
+        private void FrmLevel1_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
                 this.timPhysEng.Start();

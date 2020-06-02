@@ -7,15 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
+using TheGraveyard.Cls.MyQueries;
 
 namespace TheGraveyard
 {
-    public enum MODE { LOGIN,SIGNIN };
     public partial class FrmAccesso : Form
     {
-        Random rnd = new Random();
-        string code;
+        private enum LOGIN_ERR {NONE, USED_EMAIL, WRONG_PASSWORD};
         public FrmAccesso()
         {
             InitializeComponent();
@@ -23,54 +21,111 @@ namespace TheGraveyard
 
         private void FrmAccesso_Load(object sender, EventArgs e)
         {
-            lblCode.Hide();
-            txtCode.Hide();
+            txtEmail.MaxLength = ClsPlayerAcc.SIZE_EMAIL;
+            txtPassword.MaxLength = ClsPlayerAcc.SIZE_PASSWORD;
+            txtUsername.MaxLength = ClsPlayerAcc.SIZE_USERNAME;
+
+            if(Program.conn.State != ConnectionState.Open)
+            {
+                MessageBox.Show("Errore di connessione al database :(");
+                this.Close();
+            }
+            lblLoginSignup.Location = new Point((Width - lblLoginSignup.Width) / 2, lblLoginSignup.Location.Y);
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void RadioLogin_CheckedChanged(object sender, EventArgs e)
         {
-            if (!IsOk())
+            lblUsername.Hide();
+            txtUsername.Hide();
+            lblLoginSignup.Text = "Login";
+            //Centro la label
+            lblLoginSignup.Location = new Point((Width - lblLoginSignup.Width) / 2,lblLoginSignup.Location.Y);
+        }
+
+        private void RadioSignUp_CheckedChanged(object sender, EventArgs e)
+        {
+            lblUsername.Show();
+            txtUsername.Show();
+            lblLoginSignup.Text = "Sign Up";
+            lblLoginSignup.Location = new Point((Width - lblLoginSignup.Width) / 2, lblLoginSignup.Location.Y);
+        }
+
+        private void LblLoginSignup_Click(object sender, EventArgs e)
+        {
+            if (!AllCompleted())
             {
-                MessageBox.Show("Non tutti i campi sono stati correttamente riempiti");
+                MessageBox.Show("Completa tutti i campi!");
                 return;
             }
 
-            if (code == null)
+            if (txtUsername.Text.Contains(' '))
             {
-                code = $"{(int)rnd.Next(0, 9)}{(int)rnd.Next(0, 9)}{(int)rnd.Next(0, 9)}{(int)rnd.Next(0, 9)}{(int)rnd.Next(0, 9)}{(int)rnd.Next(0, 9)}";
-                Program.account.Email = txtMail.Text.Replace(" ;","");
-                Program.account.Password = txtPwd.Text.Replace(" ;", "");
-                Program.account.Username = txtUsername.Text.Replace(" ;", "");
-                Program.account.SendMail(Program.account.Email, "Verification code", $"Your code: {code}");
-                MessageBox.Show($"Email sent to: {Program.account.Email}");
-                lblCode.Show();
-                txtCode.Show();
-                lblCrateAcc.Text = "Check Code";
+                MessageBox.Show("L'username non può contenere spazi");
+                return;
             }
-            else if (code == txtCode.Text)
+
+            if (!txtEmail.Text.Contains('@'))
             {
-                MessageBox.Show("Account successfully created!");
-                Program.account.LastSave = DateTime.Now;
-                Program.SaveOfflineAccountData();
+                MessageBox.Show("Email non valida, manca '@'");
+                return;
+            }
+
+            if (radioLogin.Checked)
+                Login();
+            else
+                SignUp();
+        }
+
+        private void SignUp()
+        {
+            if (EmailExists())
+            {
+                MessageBox.Show("E-mail già in uso");
+                return;
+            }
+
+            Program.cmd.CommandText = MyQueries.AddAccount(
+                txtEmail.Text,txtUsername.Text,txtPassword.Text);
+            Program.cmd.ExecuteNonQuery();
+            MessageBox.Show("Account creato con successo!");
+            Login(true);
+        }
+        //FromsSignUp è true se prima è stato creato un account
+        private void Login(bool fromSignUp = false)
+        {
+            if(!fromSignUp)
+                if(!AccountExists())
+                { MessageBox.Show("Combinazione email - password non trovata"); return; }
+
+            if (Program.LoadFromDatabase(txtEmail.Text, txtPassword.Text))
+            {
+                MessageBox.Show("Login avvenuto con successo");
                 this.Close();
             }
             else
-            {
-                MessageBox.Show("Wrong code");
-            }
+                MessageBox.Show("Problemi a prendere dati dal DB");
         }
 
-        private bool IsOk()
+        private bool EmailExists()
         {
-            if ( string.IsNullOrWhiteSpace(txtMail.Text)
-                || string.IsNullOrWhiteSpace(txtPwd.Text)
-                || string.IsNullOrWhiteSpace(txtUsername.Text))
-                return false;
-
-            if (!txtMail.Text.Contains('@'))
-                return false;
-
-            return true;
+            Program.cmd.CommandText = MyQueries.EmailExists(txtEmail.Text);
+            return (int)Program.cmd.ExecuteScalar() != 0;
         }
+
+        private bool AccountExists()
+        {
+            Program.cmd.CommandText = MyQueries.AccountExists(txtEmail.Text, txtPassword.Text);
+            return (int)Program.cmd.ExecuteScalar() > 0;
+        }
+
+        private bool AllCompleted()
+        {
+            //Se l'email è stata inserita, la password è stata inserita e ( è selezionato login? se si ritorna 
+            // Se l'username è stato inserito, sennò ritorna false)
+            bool resp = String.IsNullOrWhiteSpace(txtEmail.Text) && String.IsNullOrWhiteSpace(txtPassword.Text)
+                && (radioSignUp.Checked ? String.IsNullOrWhiteSpace(txtUsername.Text) : false);
+            return !resp;
+        }
+
     }
 }

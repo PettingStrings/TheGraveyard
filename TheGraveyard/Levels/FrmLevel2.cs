@@ -179,20 +179,20 @@ namespace TheGraveyard.Levels
             foreach (var birb in skyChasers)
                 birb.TimAI.Start();
         }
-        private void timKBHit_Tick(object sender, EventArgs e)
+        private void TimKBHit_Tick(object sender, EventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.D))
             {
                 player.FDir = SADGames.Classes.Player.FACE_DIR.RIGHT; player.Walk();
                 if (player.Body.Location.X > this.Width / 2)
-                    Scroll(player.MS);
+                    ScrollCamera(player.MS);
             }
             else if (Keyboard.IsKeyDown(Key.A)) { player.FDir = SADGames.Classes.Player.FACE_DIR.LEFT; player.Walk(); }
             else if (Keyboard.IsKeyDown(Key.Space)) { player.Jump(); }
             else if (Keyboard.IsKeyDown(Key.F)) { player.Attack(); }
             else { player.Idle(); }
         }
-        private void Scroll(int dist)
+        private void ScrollCamera(int dist)
         {
             if (picWinFlag.Location.X > this.Width)
                 foreach (var control in this.Controls)
@@ -205,12 +205,12 @@ namespace TheGraveyard.Levels
                     }
                 }
         }
-        private void timGC_Tick(object sender, EventArgs e)
+        private void TimGC_Tick(object sender, EventArgs e)
         {//I bitmap non ci mettono molto ad essere rilevati, quindi forzo una pulizia sennò l'uso RAM skizza alle stelle
             System.GC.Collect();
             System.GC.WaitForPendingFinalizers();
         }
-        private void timPhysEng_Tick(object sender, EventArgs e)
+        private void TimPhysEng_Tick(object sender, EventArgs e)
         {
             Gravity();
             CheckAndResolveCollisions();
@@ -275,7 +275,7 @@ namespace TheGraveyard.Levels
             timKBHit.Start();
         }
 
-        private void frmLevel2_Resize(object sender, EventArgs e)
+        private void FrmLevel2_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
                 UnPauseProcess();
@@ -283,7 +283,7 @@ namespace TheGraveyard.Levels
                 PauseProcess();
         }
 
-        private void timTrap_Tick(object sender, EventArgs e)
+        private void TimTrap_Tick(object sender, EventArgs e)
         {
             int vel = 20;
             this.picCeiling1.Location = new Point(this.picCeiling1.Location.X,

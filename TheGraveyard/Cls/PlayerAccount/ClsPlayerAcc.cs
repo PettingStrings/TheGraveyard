@@ -5,45 +5,58 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 
 namespace TheGraveyard
 {
     /// <summary>
+    /// SINGLETON
     /// Classe dove verranno salvati i dati di un giocatore
     /// </summary>
-    public partial class ClsPlayerAcc
+    public sealed class ClsPlayerAcc
     {
+
+        private static readonly ClsPlayerAcc account = new ClsPlayerAcc();
+
+        public static ClsPlayerAcc Account => account;
+
         #region Variables
 
-        string username = "", email = "", password = "";
+        public const int SIZE_EMAIL = 100;
+        public const int SIZE_USERNAME = 20, SIZE_PASSWORD = 20;
 
-        uint kills = 0,deaths = 0,levelsUnlocked = 0;
+        char[] username = new char[SIZE_USERNAME], password = new char[SIZE_PASSWORD];
+        char[] email = new char[SIZE_EMAIL];
+
+        int kills = 0,deaths = 0,levelsUnlocked = 0;
 
         DateTime lastSave = new DateTime();
 
+        bool verified = false;
         #endregion
 
         #region Properties
 
-        public string Username { get => username; set => username = value; }
-        public string Password { get => password; set => password = value; }
-        public uint Kills { get => kills; set => kills = value; }
-        public uint Deaths { get => deaths; set => deaths = value; }
-        public string Email { get => email; set => email = value; }
+        public char[] Username { get => username; set => username = value; }
+        public char[] Password { get => password; set => password = value; }
+        public int Kills { get => kills; set => kills = value; }
+        public int Deaths { get => deaths; set => deaths = value; }
+        public char[] Email { get => email; set => email = value; }
         public DateTime LastSave { get => lastSave; set => lastSave = value; }
-        public uint LevelsUnlocked { get => levelsUnlocked; set => levelsUnlocked = value; }
-
+        public int LevelsUnlocked { get => levelsUnlocked; set => levelsUnlocked = value; }
+        public bool Verified { get => verified; set => verified = value; }
+        public bool Connected { get => !string.IsNullOrWhiteSpace(new string(Email).Trim('\0')); }
 
         #endregion
 
         #region Methods
+        private ClsPlayerAcc() { }
 
-        public ClsPlayerAcc() { }
         /// <summary>
         /// Carica i dati da file (da finire)
         /// </summary>
         /// <returns></returns>
-        public bool LoadData() {
+        public bool LoadLocalData() {
 
             return false;
         }
@@ -57,10 +70,10 @@ namespace TheGraveyard
         {
                 SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
                 {
-                    Credentials = new NetworkCredential("danutzzu2002.ro@gmail.com", "Danibell2002"),
+                    Credentials = new NetworkCredential("danutzzu2002.ro@gmail.com", "qui ci va la password che ovviamente ho cancellato"),
                     EnableSsl = true
                 };
-                client.Send(from, this.email, title, body);
+                client.Send(from, email.ToString(), title, body);
             
         }
         /// <summary>
@@ -72,13 +85,13 @@ namespace TheGraveyard
             try
             {
                 string[] infos = data.Split(';');
-                this.Username = infos[0];
-                this.Email = infos[1];
-                this.Password = infos[2];
-                this.Kills = Convert.ToUInt32(infos[3]);
-                this.Deaths = Convert.ToUInt32(infos[4]);
+                this.Username = infos[0].ToCharArray();
+                this.Email = infos[1].ToCharArray();
+                this.Password = infos[2].ToCharArray();
+                this.Kills = Convert.ToInt32(infos[3]);
+                this.Deaths = Convert.ToInt32(infos[4]);
                 this.LastSave = DateTime.Parse(infos[5]);
-                this.LevelsUnlocked = Convert.ToUInt32(infos[6]);
+                this.LevelsUnlocked = Convert.ToInt32(infos[6]);
             }
             catch { }
         }
@@ -89,9 +102,18 @@ namespace TheGraveyard
         public string GetInfoString()
         {
             return $"{this.Username};{this.Email};{this.Password};{this.Kills};" +
-                $"{this.Deaths};{this.LastSave.ToString()};{this.LevelsUnlocked}";
+                $"{this.Deaths};{this.LastSave};{this.LevelsUnlocked}";
         }
 
+        public void Reset()
+        {
+            username = new char[SIZE_USERNAME];
+            password = new char[SIZE_PASSWORD];
+            email = new char[SIZE_EMAIL];
+            kills = deaths = levelsUnlocked = 0;
+            lastSave = new DateTime();
+            verified = false;
+        }
         #endregion
 
     }

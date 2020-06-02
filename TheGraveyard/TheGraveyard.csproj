@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PED">
-      <HintPath>..\..\PED-Crittografo\PED\bin\Debug\PED.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,6 +58,7 @@
     <Compile Include="Cls\CollidableObject\ClsCollidableObject_Variables.cs" />
     <Compile Include="Cls\Enemy\ClsPlatformWatcher.cs" />
     <Compile Include="Cls\Moon\ClsMoon.cs" />
+    <Compile Include="Cls\MyQueries\MyQueries.cs" />
     <Compile Include="Cls\Platform\ClsPlatform.cs" />
     <Compile Include="Cls\PlayerAccount\ClsPlayerAcc.cs" />
     <Compile Include="Cls\Player\Partial_ClsPlayer_Attack.cs" />
@@ -272,9 +270,10 @@
     <Content Include="Assets\spike\Spikes.png" />
     <Content Include="Cls\HUD\0.bmp" />
     <Content Include="Cls\HUD\2.bmp" />
+    <Content Include="db.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cls\Boss\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

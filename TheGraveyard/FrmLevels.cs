@@ -30,7 +30,7 @@ namespace TheGraveyard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void picLvl1_Click(object sender, EventArgs e)
+        private void PicLvl1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("A-> Movimento a Sinistra\nD-> Movimento a Destra\nF-> Attacco\n Space-> Salto","Comandi");
             this.Hide();
@@ -46,8 +46,14 @@ namespace TheGraveyard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void picLvl2_Click(object sender, EventArgs e)
+        private void PicLvl2_Click(object sender, EventArgs e)
         {
+            if (ClsPlayerAcc.Account.LevelsUnlocked == 0)
+            {
+                MessageBox.Show("level locked");
+                return;
+            }
+                
             MessageBox.Show("A-> Movimento a Sinistra\nD-> Movimento a Destra\nF-> Attacco\n Space-> Salto", "Comandi");
             this.Hide();
             TheGraveyard.Levels.FrmLevel2 frmLvl2 = new Levels.FrmLevel2();

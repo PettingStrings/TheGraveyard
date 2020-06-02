@@ -318,22 +318,22 @@
             // timKBHit
             // 
             this.timKBHit.Interval = 10;
-            this.timKBHit.Tick += new System.EventHandler(this.timKBHit_Tick);
+            this.timKBHit.Tick += new System.EventHandler(this.TimKBHit_Tick);
             // 
             // timPhysEng
             // 
             this.timPhysEng.Interval = 10;
-            this.timPhysEng.Tick += new System.EventHandler(this.timPhysEng_Tick);
+            this.timPhysEng.Tick += new System.EventHandler(this.TimPhysEng_Tick);
             // 
             // timGC
             // 
             this.timGC.Interval = 1000;
-            this.timGC.Tick += new System.EventHandler(this.timGC_Tick);
+            this.timGC.Tick += new System.EventHandler(this.TimGC_Tick);
             // 
             // timTrap
             // 
             this.timTrap.Interval = 1500;
-            this.timTrap.Tick += new System.EventHandler(this.timTrap_Tick);
+            this.timTrap.Tick += new System.EventHandler(this.TimTrap_Tick);
             // 
             // FrmLevel2
             // 
@@ -368,7 +368,7 @@
             this.Name = "FrmLevel2";
             this.Text = "FrmLvl2";
             this.Load += new System.EventHandler(this.FrmLevel2_Load);
-            this.Resize += new System.EventHandler(this.frmLevel2_Resize);
+            this.Resize += new System.EventHandler(this.FrmLevel2_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.picMainGround)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCeiling1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

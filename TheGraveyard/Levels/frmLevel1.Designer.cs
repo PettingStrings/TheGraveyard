@@ -290,17 +290,17 @@
             // timKBHit
             // 
             this.timKBHit.Interval = 10;
-            this.timKBHit.Tick += new System.EventHandler(this.timKBHit_Tick);
+            this.timKBHit.Tick += new System.EventHandler(this.TimKBHit_Tick);
             // 
             // timGC
             // 
             this.timGC.Interval = 1000;
-            this.timGC.Tick += new System.EventHandler(this.timGC_Tick);
+            this.timGC.Tick += new System.EventHandler(this.TimGC_Tick);
             // 
             // timPhysEng
             // 
             this.timPhysEng.Interval = 10;
-            this.timPhysEng.Tick += new System.EventHandler(this.timPhysEng_Tick);
+            this.timPhysEng.Tick += new System.EventHandler(this.TimPhysEng_Tick);
             // 
             // picSkelly1
             // 
@@ -402,8 +402,8 @@
             this.MaximumSize = new System.Drawing.Size(2000, 2000);
             this.Name = "FrmLevel1";
             this.Text = "frmLevel1";
-            this.Load += new System.EventHandler(this.frmLevel1_Load);
-            this.Resize += new System.EventHandler(this.frmLevel1_Resize);
+            this.Load += new System.EventHandler(this.FrmLevel1_Load);
+            this.Resize += new System.EventHandler(this.FrmLevel1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.picMainGround)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTopGround)).EndInit();

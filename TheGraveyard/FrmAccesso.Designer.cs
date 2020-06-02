@@ -28,146 +28,121 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPwd = new System.Windows.Forms.TextBox();
-            this.txtMail = new System.Windows.Forms.TextBox();
+            this.lblLoginSignup = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.lblCrateAcc = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtCode = new System.Windows.Forms.TextBox();
-            this.lblCode = new System.Windows.Forms.Label();
+            this.radioLogin = new System.Windows.Forms.RadioButton();
+            this.radioSignUp = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
-            // label1
+            // lblLoginSignup
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(47, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Username:";
+            this.lblLoginSignup.AutoSize = true;
+            this.lblLoginSignup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoginSignup.Location = new System.Drawing.Point(122, 133);
+            this.lblLoginSignup.Name = "lblLoginSignup";
+            this.lblLoginSignup.Size = new System.Drawing.Size(48, 20);
+            this.lblLoginSignup.TabIndex = 2;
+            this.lblLoginSignup.Text = "Login";
+            this.lblLoginSignup.Click += new System.EventHandler(this.LblLoginSignup_Click);
             // 
-            // label2
+            // txtEmail
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(77, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "E-mail:";
+            this.txtEmail.Location = new System.Drawing.Point(131, 35);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(124, 20);
+            this.txtEmail.TabIndex = 5;
             // 
-            // label3
+            // lblEmail
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(213, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "(spedizione email viene bloccata da google)";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(31, 35);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(52, 20);
+            this.lblEmail.TabIndex = 6;
+            this.lblEmail.Text = "Email:";
             // 
-            // label4
+            // lblPassword
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(52, 88);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Password:";
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(31, 61);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(82, 20);
+            this.lblPassword.TabIndex = 8;
+            this.lblPassword.Text = "Password:";
             // 
-            // txtPwd
+            // txtPassword
             // 
-            this.txtPwd.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.txtPwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPwd.ForeColor = System.Drawing.SystemColors.Info;
-            this.txtPwd.Location = new System.Drawing.Point(140, 90);
-            this.txtPwd.Name = "txtPwd";
-            this.txtPwd.PasswordChar = '*';
-            this.txtPwd.Size = new System.Drawing.Size(100, 26);
-            this.txtPwd.TabIndex = 6;
+            this.txtPassword.Location = new System.Drawing.Point(131, 61);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(124, 20);
+            this.txtPassword.TabIndex = 7;
             // 
-            // txtMail
+            // lblUsername
             // 
-            this.txtMail.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.txtMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMail.ForeColor = System.Drawing.SystemColors.Info;
-            this.txtMail.Location = new System.Drawing.Point(140, 55);
-            this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(100, 26);
-            this.txtMail.TabIndex = 7;
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(31, 87);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(87, 20);
+            this.lblUsername.TabIndex = 10;
+            this.lblUsername.Text = "Username:";
+            this.lblUsername.Visible = false;
             // 
             // txtUsername
             // 
-            this.txtUsername.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.ForeColor = System.Drawing.SystemColors.Info;
-            this.txtUsername.Location = new System.Drawing.Point(140, 25);
+            this.txtUsername.Location = new System.Drawing.Point(131, 87);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(100, 26);
-            this.txtUsername.TabIndex = 8;
+            this.txtUsername.Size = new System.Drawing.Size(124, 20);
+            this.txtUsername.TabIndex = 9;
+            this.txtUsername.Visible = false;
             // 
-            // lblCrateAcc
+            // radioLogin
             // 
-            this.lblCrateAcc.AutoSize = true;
-            this.lblCrateAcc.Location = new System.Drawing.Point(104, 166);
-            this.lblCrateAcc.Name = "lblCrateAcc";
-            this.lblCrateAcc.Size = new System.Drawing.Size(72, 13);
-            this.lblCrateAcc.TabIndex = 9;
-            this.lblCrateAcc.Text = "Crea Account";
-            this.lblCrateAcc.Click += new System.EventHandler(this.label5_Click);
+            this.radioLogin.AutoSize = true;
+            this.radioLogin.Checked = true;
+            this.radioLogin.Location = new System.Drawing.Point(12, 214);
+            this.radioLogin.Name = "radioLogin";
+            this.radioLogin.Size = new System.Drawing.Size(51, 17);
+            this.radioLogin.TabIndex = 11;
+            this.radioLogin.TabStop = true;
+            this.radioLogin.Text = "Login";
+            this.radioLogin.UseVisualStyleBackColor = true;
+            this.radioLogin.CheckedChanged += new System.EventHandler(this.RadioLogin_CheckedChanged);
             // 
-            // label6
+            // radioSignUp
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(244, 351);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Accedi";
-            // 
-            // txtCode
-            // 
-            this.txtCode.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCode.ForeColor = System.Drawing.SystemColors.Info;
-            this.txtCode.Location = new System.Drawing.Point(140, 122);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(100, 26);
-            this.txtCode.TabIndex = 12;
-            // 
-            // lblCode
-            // 
-            this.lblCode.AutoSize = true;
-            this.lblCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCode.Location = new System.Drawing.Point(9, 122);
-            this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(134, 20);
-            this.lblCode.TabIndex = 11;
-            this.lblCode.Text = "Verification Code:";
+            this.radioSignUp.AutoSize = true;
+            this.radioSignUp.Location = new System.Drawing.Point(12, 237);
+            this.radioSignUp.Name = "radioSignUp";
+            this.radioSignUp.Size = new System.Drawing.Size(66, 17);
+            this.radioSignUp.TabIndex = 12;
+            this.radioSignUp.Text = "Sign  Up";
+            this.radioSignUp.UseVisualStyleBackColor = true;
+            this.radioSignUp.CheckedChanged += new System.EventHandler(this.RadioSignUp_CheckedChanged);
             // 
             // FrmAccesso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(296, 373);
-            this.Controls.Add(this.txtCode);
-            this.Controls.Add(this.lblCode);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.lblCrateAcc);
+            this.ClientSize = new System.Drawing.Size(285, 266);
+            this.Controls.Add(this.radioSignUp);
+            this.Controls.Add(this.radioLogin);
+            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.txtMail);
-            this.Controls.Add(this.txtPwd);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.lblLoginSignup);
+            this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Name = "FrmAccesso";
             this.Text = "FrmAccesso";
             this.Load += new System.EventHandler(this.FrmAccesso_Load);
@@ -178,16 +153,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtPwd;
-        private System.Windows.Forms.TextBox txtMail;
+        private System.Windows.Forms.Label lblLoginSignup;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Label lblCrateAcc;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtCode;
-        private System.Windows.Forms.Label lblCode;
+        private System.Windows.Forms.RadioButton radioLogin;
+        private System.Windows.Forms.RadioButton radioSignUp;
     }
 }

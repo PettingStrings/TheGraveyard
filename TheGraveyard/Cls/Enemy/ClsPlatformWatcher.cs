@@ -43,7 +43,8 @@ namespace SADGames.Classes.PlatformWatcher
         }
         /// <summary>
         /// Cammina fino a quando non ha raggiunto il suo limite per
-        /// poi ritornare indietro, nel frattemo controlla de il giocatore 
+        /// poi ritornare in
+        /// tro, nel frattemo controlla de il giocatore 
         /// è entrato nel suo raggio d'azione
         /// </summary>
         private void AI()

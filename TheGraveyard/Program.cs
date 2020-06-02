@@ -3,17 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OleDb;
 using System.IO;
-using PED;
+using TheGraveyard;
+using TheGraveyard.Cls.MyQueries;
+
+// cmd.ExecuteScalar();   query che ritornano un solo valore COUNT, SUM, AVG etc...
+// cmd.ExecuteNonQuery(); query di tipo CREATE, DROP, INSERT, UPDATE, DELETE etc...
+// cmd.ExecuteReader();   query di SELECT
+
 
 namespace TheGraveyard
 {
 
     static class Program
-    {
+    { 
         public static ClsMoon moon;
-        public static ClsPlayerAcc account = new ClsPlayerAcc();
-        const int keyLen = 5;
+        public static OleDbConnection conn = new OleDbConnection(
+            @"Provider=Microsoft.ACE.OLEDB.12.0;
+            Data Source=db.accdb;
+            Persist Security Info=False;");
+        public static OleDbCommand cmd = new OleDbCommand("", conn);
+
         /// <summary>
         /// Punto di ingresso principale dell'applicazione.
         /// </summary>
@@ -22,6 +33,7 @@ namespace TheGraveyard
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            conn.Open();
             LoadMoon();
             Application.Run(new FrmMainMenu());
         }
@@ -39,31 +51,43 @@ namespace TheGraveyard
 
             moon.TimAnim.Interval = (int)(1000 / moon.AnimMoon.FramesLenght);
         }
-        /// <summary>
-        /// Salva i dati su HDD
-        /// </summary>
-        internal static void SaveOfflineAccountData()
-        {
-            StreamWriter writer = new StreamWriter("saveData.padu");
-            writer.WriteLine(account.GetInfoString());
-            writer.Close();
-        }
-        /// <summary>
-        /// Carica i dati da HDD
-        /// </summary>
-        /// <returns>vero se è andato tutto a buon fine</returns>
-        internal static bool LoadOfflineAccountData()
+
+        public static bool LoadFromDatabase(string email,string password)
         {
             try
             {
-                StreamReader reader = new StreamReader("saveData.padu");
-                account.ParseInfoString(reader.ReadLine());
-                reader.Close();
-            }catch(Exception e)
+                cmd.CommandText = MyQueries.GetAccount(email,password);
+                OleDbDataReader dbReader = cmd.ExecuteReader();
+                dbReader.Read();
+                ClsPlayerAcc.Account.Email = dbReader["email"].ToString().Trim().ToCharArray();
+                ClsPlayerAcc.Account.Username = dbReader["nome"].ToString().Trim().ToCharArray();
+                ClsPlayerAcc.Account.Password = dbReader["password"].ToString().Trim().ToCharArray();
+                ClsPlayerAcc.Account.Verified = (bool)dbReader["verificato"];
+                ClsPlayerAcc.Account.Deaths = (int)dbReader["mortiTotali"];
+                ClsPlayerAcc.Account.Kills = (int)dbReader["uccisioniTotali"];
+                ClsPlayerAcc.Account.LastSave = (DateTime)dbReader["ultimoBackup"];
+                dbReader.Close();
+                cmd.CommandText = MyQueries.GetUnlockedLevels(email);
+                ClsPlayerAcc.Account.LevelsUnlocked = (int)cmd.ExecuteScalar();
+            }
+            catch
             {
                 return false;
             }
+            
             return true;
+        }
+
+        internal static void Commit()
+        {
+            cmd.CommandText = MyQueries.UpdatePlayer(
+                new string(ClsPlayerAcc.Account.Email),
+                new string(ClsPlayerAcc.Account.Username),
+                new string(ClsPlayerAcc.Account.Password),
+                ClsPlayerAcc.Account.Verified,
+                ClsPlayerAcc.Account.Kills,
+                ClsPlayerAcc.Account.Deaths);
+            cmd.ExecuteNonQuery();
         }
     }
 }

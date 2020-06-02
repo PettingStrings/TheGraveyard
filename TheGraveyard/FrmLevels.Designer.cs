@@ -45,7 +45,7 @@
             this.picLvl1.Size = new System.Drawing.Size(112, 105);
             this.picLvl1.TabIndex = 0;
             this.picLvl1.TabStop = false;
-            this.picLvl1.Click += new System.EventHandler(this.picLvl1_Click);
+            this.picLvl1.Click += new System.EventHandler(this.PicLvl1_Click);
             // 
             // picLvl2
             // 
@@ -57,7 +57,7 @@
             this.picLvl2.Size = new System.Drawing.Size(112, 105);
             this.picLvl2.TabIndex = 1;
             this.picLvl2.TabStop = false;
-            this.picLvl2.Click += new System.EventHandler(this.picLvl2_Click);
+            this.picLvl2.Click += new System.EventHandler(this.PicLvl2_Click);
             // 
             // FrmLevels
             // 

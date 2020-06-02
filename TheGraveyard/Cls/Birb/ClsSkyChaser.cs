@@ -53,10 +53,10 @@ namespace SADGames.Classes.Birb
         private void AI()
         {
             //https://yal.cc/rectangle-circle-intersection-test/
-            int distX = this.Body.Location.X - 
-                Math.Max(target.Location.X, Math.Min(this.Body.Location.X, target.Location.X + target.Width));
-            int distY = this.Body.Location.Y - 
-                Math.Max(target.Location.Y, Math.Min(this.Body.Location.Y, target.Location.Y + target.Height));
+            double distX = this.Body.Location.X - 
+                Math.Max(Collidable_Object.ClsCollidableObject.GetCx(target), Math.Min(this.Body.Location.X, target.Location.X + target.Width));
+            double distY = this.Body.Location.Y - 
+                Math.Max(Collidable_Object.ClsCollidableObject.GetCy(target), Math.Min(this.Body.Location.Y, target.Location.Y + target.Height));
             if (!inRange)
             {
                 inRange = (distX * distX + distY * distY) < (range * range);
@@ -66,8 +66,8 @@ namespace SADGames.Classes.Birb
             else
             {
                 this.Body.Location = new System.Drawing.Point(
-                    (int)(Math.Ceiling(this.Body.Location.X - distX*0.10)),
-                    (int)(Math.Ceiling(this.Body.Location.Y - distY * 0.10))
+                    (int)(Math.Ceiling(this.Body.Location.X - distX * 0.10 - 2)),
+                    (int)(Math.Ceiling(this.Body.Location.Y - distY * 0.10 - 2))
                     );
             }
         }
