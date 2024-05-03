@@ -3,7 +3,8 @@
 Le pixel art sono state prese da __[Open Game Art](https://opengameart.org/)__.<br>
 Il protagonista è un cavaliere che sta esplorando un cimitero e dovrà farsi avanti tra gli scheletri.<br>
 
-[![Gameplay](https://i.ytimg.com/vi/9XiBA2TiG50/maxresdefault.jpg)](https://www.youtube.com/watch?v=9XiBA2TiG50 "Gameplay")
+[![Gameplay](https://i.ytimg.com/vi/9XiBA2TiG50/maxresdefault.jpg)
+](https://www.youtube.com/watch?v=9XiBA2TiG50)
 
 <br>
 
